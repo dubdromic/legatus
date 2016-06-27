@@ -11,8 +11,8 @@ class MainMenu < State
   end
 
   def draw
-    title_font.draw("Legatus", 200, 200, 1)
-    description_font.draw('Press Spacebar', 200, 255, 1)
+    title_font.draw("Legatus", 150, 200, 1)
+    description_font.draw('Press Spacebar', 150, 255, 1)
   end
 
   private

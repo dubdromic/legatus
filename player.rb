@@ -6,9 +6,9 @@ class Player < Entity
   def initialize(screen)
     @x_velocity = 0
     @y_velocity = 0
-    @image = Gosu::Image.new('media/player.png')
     @screen = screen
-    super(0, 0, image.width, image.height)
+    @last_bullet_time = Gosu::milliseconds
+    super(screen.half_width - image.width/2, screen.h - (image.height + 40), image.width, image.height)
   end
 
   def update(input)
@@ -22,9 +22,27 @@ class Player < Entity
     image.draw(x, y, 0)
   end
 
+  def fire
+    return NullBullet.new unless can_fire?
+    @last_bullet_time = Gosu::milliseconds
+    Bullet.new(x + half_width, y, bullet_image)
+  end
+
   private
 
-  attr_reader :image, :screen
+  attr_reader :image, :screen, :last_bullet_time
+
+  def can_fire?
+    Gosu::milliseconds - last_bullet_time > 150
+  end
+
+  def image
+    @image ||= Gosu::Image.new('media/player.png')
+  end
+
+  def bullet_image
+    @bullet_image ||= Gosu::Image.new('media/bullet.png')
+  end
 
   def bound_to_screen
     @x -= @x_velocity if x < 0 || (x + w) > screen.w

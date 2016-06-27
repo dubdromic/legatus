@@ -5,12 +5,14 @@ require './in_game'
 require './main_menu'
 require './entity'
 require './screen'
+require './bullet'
+require './null_bullet'
 require './player'
 require './game'
 
 class Window  < Gosu::Window
-  WIDTH = 640
-  HEIGHT = 480
+  WIDTH = 480
+  HEIGHT = 640
 
   def initialize
     super(WIDTH, HEIGHT)
