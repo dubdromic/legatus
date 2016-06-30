@@ -12,7 +12,7 @@ class Bullet < Entity
     image.draw(x, y, 0)
   end
 
-  def off_screen?
+  def removable?
     (y + h) < 0
   end
 

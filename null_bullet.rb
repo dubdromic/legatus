@@ -1,11 +1,11 @@
 class NullBullet
-  def update(_)
+  def update(_ = nil)
   end
 
   def draw
   end
 
-  def off_screen?
+  def removable?
     true
   end
 end
