@@ -14,7 +14,7 @@ class Enemy < Entity
   end
 
   def removable?
-    x > screen.h
+    x > screen.h || super
   end
 
   private

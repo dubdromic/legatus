@@ -1,11 +1,12 @@
 class Bullet < Entity
   def initialize(x, y)
     @image = BulletGraphics.new.image
+    @physics = BulletPhysics.new
     super(x, y, image.width, image.height)
   end
 
   def update(input = nil)
-    @y -= 12
+    physics.update(self, input, screen)
   end
 
   def draw
@@ -13,10 +14,10 @@ class Bullet < Entity
   end
 
   def removable?
-    (y + h) < 0
+    (y + h) < 0 || super
   end
 
   private
 
-  attr_reader :image
+  attr_reader :image, :physics
 end

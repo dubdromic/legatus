@@ -15,6 +15,7 @@ class EntityPool
   end
 
   def add(entity)
+    entity.pool = self
     entities << entity
   end
 end

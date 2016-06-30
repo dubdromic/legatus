@@ -8,4 +8,7 @@ class NullBullet
   def removable?
     true
   end
+
+  def pool=(_)
+  end
 end
