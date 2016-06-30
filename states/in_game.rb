@@ -2,9 +2,7 @@ class InGame < State
   def initialize(screen)
     @player = Player.new screen
     @entity_pool = EntityPool.new
-    @background = Gosu::Image.new('media/background.png', tileable: true)
     @last_enemy_time = Gosu::milliseconds
-    setup_player
     super screen
   end
 
@@ -14,7 +12,7 @@ class InGame < State
       entity_pool.add EnemyFactory.build(screen)
     end
 
-    entity_pool.add player.fire if input.space?
+    entity_pool.add(player.fire) if input.space?
     entity_pool.update
     player.update input
 
@@ -22,7 +20,7 @@ class InGame < State
   end
 
   def draw
-    background.draw_rot(background.height/2, background.width/2, 0, 90)
+    background_image.draw_rot(background_image.height/2, background_image.width/2, 0, 90)
     player.draw
     entity_pool.draw
   end
@@ -31,11 +29,11 @@ class InGame < State
 
   attr_reader :player, :entity_pool, :background, :last_enemy_time
 
-  def setup_player
-    player.physics = PlayerPhysics.new
-  end
-
   def spawn_enemy?
     Gosu::milliseconds - last_enemy_time > 500
+  end
+
+  def background_image
+    @background_image ||= BackgroundImage.image
   end
 end

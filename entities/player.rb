@@ -2,6 +2,8 @@ class Player < Entity
   attr_accessor :physics
 
   def initialize(screen)
+    @physics = PlayerPhysics.new
+    @image = PlayerGraphics.new.image
     @screen = screen
     @last_bullet_time = Gosu::milliseconds
     super(
@@ -23,7 +25,7 @@ class Player < Entity
   def fire
     return NullBullet.new unless can_fire?
     @last_bullet_time = Gosu::milliseconds
-    Bullet.new(x + half_width, y, bullet_image)
+    Bullet.new(x + half_width, y)
   end
 
   private
@@ -32,13 +34,5 @@ class Player < Entity
 
   def can_fire?
     Gosu::milliseconds - last_bullet_time > 150
-  end
-
-  def image
-    @image ||= Gosu::Image.new('media/player.png')
-  end
-
-  def bullet_image
-    @bullet_image ||= Gosu::Image.new('media/bullet.png')
   end
 end

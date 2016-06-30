@@ -1,20 +1,11 @@
 require 'gosu'
-require './input'
-require './state'
-require './in_game'
-require './main_menu'
-require './entity_pool'
-require './entity'
-require './screen'
-require './bullet'
-require './null_bullet'
-require './physics'
-require './player_physics'
-require './player'
-require './enemy_physics'
-require './enemy_input'
-require './enemy'
-require './enemy_factory'
+require 'require_all'
+
+require_all 'components'
+require_all 'entities'
+require_all 'states'
+require_all 'misc'
+
 require './game'
 
 class Window  < Gosu::Window

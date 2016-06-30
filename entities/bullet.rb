@@ -1,6 +1,6 @@
 class Bullet < Entity
-  def initialize(x, y, image)
-    @image = image
+  def initialize(x, y)
+    @image = BulletGraphics.new.image
     super(x, y, image.width, image.height)
   end
 
