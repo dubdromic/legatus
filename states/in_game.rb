@@ -3,6 +3,8 @@ class InGame < State
     @player = Player.new screen
     @entity_pool = EntityPool.new
     @last_enemy_time = Gosu::milliseconds
+    @flyin_and_a_killin = Gosu::Sample.new("media/flyin_and_a_killin.wav")
+    @flyin_and_a_killin.play(1, 1, true)
     super screen
   end
 

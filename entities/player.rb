@@ -6,12 +6,14 @@ class Player < Entity
     @image = PlayerGraphics.new.image
     @screen = screen
     @last_bullet_time = Gosu::milliseconds
+    @start_engines = Gosu::Sample.new("media/start_engines.wav")
     super(
       screen.half_width - image.width/2,
       screen.h - (image.height + 40),
       image.width,
       image.height
     )
+    @start_engines.play
   end
 
   def update(input)
@@ -26,6 +28,8 @@ class Player < Entity
     return NullBullet.new unless can_fire?
     @last_bullet_time = Gosu::milliseconds
     Bullet.new(x + half_width, y)
+    
+
   end
 
   private
