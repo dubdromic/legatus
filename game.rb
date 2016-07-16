@@ -1,6 +1,6 @@
 class Game
   def initialize(screen)
-    @state = MainMenu.new screen
+    @state = MainMenu.new(screen).start
   end
 
   def update(input)

@@ -4,17 +4,11 @@ class MainMenu < State
     @title_font = Gosu::Font.new 40
     @description_font = Gosu::Font.new 20
     @background = Gosu::Image.new('media/background.png', tileable: true)
-    @intro = Gosu::Sample.new("media/intro.wav")
-
-    @intro.play(1, 1, true)
     super screen
   end
 
   def update(input)
-    if input.space?
-      #@intro.stop
-      return InGame.new(screen) 
-    end
+    stop and return InGame.new(screen).start if input.space?
     self
   end
 
@@ -27,4 +21,8 @@ class MainMenu < State
   private
 
   attr_reader :title_font, :description_font, :background
+
+  def background_song
+    "media/intro.wav"
+  end
 end

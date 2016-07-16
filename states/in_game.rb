@@ -3,8 +3,6 @@ class InGame < State
     @player = Player.new screen
     @entity_pool = EntityPool.new
     @last_enemy_time = Gosu::milliseconds
-    @flyin_and_a_killin = Gosu::Sample.new("media/flyin_and_a_killin.wav")
-    @flyin_and_a_killin.play(1, 1, true)
     super screen
   end
 
@@ -33,6 +31,10 @@ class InGame < State
 
   def spawn_enemy?
     Gosu::milliseconds - last_enemy_time > 500
+  end
+
+  def background_song
+    "media/flyin_and_a_killin.wav"
   end
 
   def background_image
