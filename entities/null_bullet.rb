@@ -5,6 +5,8 @@ class NullBullet
   def draw
   end
 
+  def before_removal; end
+
   def removable?
     true
   end

@@ -2,7 +2,6 @@ class BulletPhysics < Physics
   def initialize
     @x_velocity = 0
     @y_velocity = -12
-    @explosion = Gosu::Sample.new("media/explosion.wav")
   end
 
   def update(entity, _, _)
@@ -14,7 +13,6 @@ class BulletPhysics < Physics
         if AxisAlignedCollision.check(entity, other)
           other.remove!
           entity.remove!
-          @explosion.play
         end
       end
     end

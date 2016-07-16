@@ -7,6 +7,7 @@ class EntityPool
 
   def update
     entities.each(&:update)
+    entities.select(&:removable?).map(&:before_removal)
     entities.reject!(&:removable?)
   end
 

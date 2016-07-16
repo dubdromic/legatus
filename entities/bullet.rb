@@ -20,6 +20,9 @@ class Bullet < Entity
     (y + h) < 0 || super
   end
 
+  def before_removal
+  end
+
   private
 
   attr_reader :image, :physics

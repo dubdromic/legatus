@@ -28,8 +28,6 @@ class Player < Entity
     return NullBullet.new unless can_fire?
     @last_bullet_time = Gosu::milliseconds
     Bullet.new(x + half_width, y)
-    
-
   end
 
   private

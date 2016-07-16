@@ -17,6 +17,10 @@ class Enemy < Entity
     x > screen.h || super
   end
 
+  def before_removal
+    Gosu::Sample.new("media/explosion.wav").play
+  end
+
   private
 
   attr_reader :image, :screen
