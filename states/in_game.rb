@@ -7,11 +7,7 @@ class InGame < State
   end
 
   def update(input)
-    if spawn_enemy?
-      @last_enemy_time = Gosu::milliseconds
-      entity_pool.add EnemyFactory.build(screen)
-    end
-
+    add_new_enemy if spawn_enemy?
     entity_pool.update input
 
     self
@@ -26,8 +22,13 @@ class InGame < State
 
   attr_reader :entity_pool, :background, :last_enemy_time
 
+  def add_new_enemy
+    @last_enemy_time = Gosu::milliseconds
+    entity_pool.add EnemyFactory.build(screen)
+  end
+
   def spawn_enemy?
-    Gosu::milliseconds - last_enemy_time > 500
+    Gosu::milliseconds - last_enemy_time > 1000
   end
 
   def background_song
