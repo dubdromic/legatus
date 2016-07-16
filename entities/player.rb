@@ -17,6 +17,7 @@ class Player < Entity
   end
 
   def update(input)
+    pool.add(fire) if input.space?
     physics.update(self, input, screen)
   end
 

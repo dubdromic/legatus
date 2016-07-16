@@ -1,8 +1,8 @@
 class InGame < State
   def initialize(screen)
-    @player = Player.new screen
     @entity_pool = EntityPool.new
     @last_enemy_time = Gosu::milliseconds
+    entity_pool.add Player.new(screen)
     super screen
   end
 
@@ -12,22 +12,19 @@ class InGame < State
       entity_pool.add EnemyFactory.build(screen)
     end
 
-    entity_pool.add(player.fire) if input.space?
-    entity_pool.update
-    player.update input
+    entity_pool.update input
 
     self
   end
 
   def draw
     background_image.draw_rot(background_image.height/2, background_image.width/2, 0, 90)
-    player.draw
     entity_pool.draw
   end
 
   private
 
-  attr_reader :player, :entity_pool, :background, :last_enemy_time
+  attr_reader :entity_pool, :background, :last_enemy_time
 
   def spawn_enemy?
     Gosu::milliseconds - last_enemy_time > 500

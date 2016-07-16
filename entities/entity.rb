@@ -28,4 +28,12 @@ class Entity
   def removable?
     mark_for_removal
   end
+
+  def update(_)
+    fail NotImplementedError
+  end
+
+  def draw
+    fail NotImplementedError
+  end
 end

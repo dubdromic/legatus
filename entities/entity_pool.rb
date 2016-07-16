@@ -5,8 +5,8 @@ class EntityPool
     @entities = []
   end
 
-  def update
-    entities.each(&:update)
+  def update(input)
+    entities.each { |e| e.update(input) }
     entities.select(&:removable?).map(&:before_removal)
     entities.reject!(&:removable?)
   end

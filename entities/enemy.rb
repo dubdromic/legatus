@@ -5,7 +5,7 @@ class Enemy < Entity
     super(x, y, image.width, image.height)
   end
 
-  def update
+  def update(_)
     physics.update(self, EnemyInput.new, screen)
   end
 
