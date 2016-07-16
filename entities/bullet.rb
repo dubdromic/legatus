@@ -2,10 +2,9 @@ class Bullet < Entity
   def initialize(x, y)
     @image = BulletGraphics.new.image
     @physics = BulletPhysics.new
-    @laser = Gosu::Sample.new("media/laser.wav")
-    
+    @sound = BulletSound.new.sound
+    @sound.play
     super(x, y, image.width, image.height)
-    @laser.play
   end
 
   def update(input = nil)
