@@ -17,6 +17,10 @@ class Entity
     h / 2
   end
 
+  def hit!
+    remove!
+  end
+
   def remove!
     @mark_for_removal = true
   end

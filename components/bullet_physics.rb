@@ -11,8 +11,8 @@ class BulletPhysics < Physics
       next if entity == other
       if other.is_a?(Enemy)
         if AxisAlignedCollision.check(entity, other)
-          other.remove!
-          entity.remove!
+          entity.hit!
+          other.hit!
         end
       end
     end
