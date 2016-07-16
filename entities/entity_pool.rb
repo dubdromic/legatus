@@ -6,6 +6,7 @@ class EntityPool
   end
 
   def update(input)
+    Collider.new(entities).update
     entities.each { |e| e.update(input) }
     entities.select(&:removable?).map(&:before_removal)
     entities.reject!(&:removable?)

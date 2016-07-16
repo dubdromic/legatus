@@ -17,7 +17,14 @@ class Entity
     h / 2
   end
 
-  def hit!
+  def before_removal
+  end
+
+  def collidable?
+    true
+  end
+
+  def hit!(_)
     remove!
   end
 

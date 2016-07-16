@@ -16,7 +16,7 @@ class Bullet < Entity
   end
 
   def removable?
-    (y + h) < 0 || super
+    y <= 0 || super
   end
 
   def before_removal

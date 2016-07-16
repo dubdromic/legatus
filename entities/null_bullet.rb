@@ -1,4 +1,7 @@
-class NullBullet
+class NullBullet < Entity
+  def initialize(*)
+  end
+
   def update(_ = nil)
   end
 
@@ -12,5 +15,9 @@ class NullBullet
   end
 
   def pool=(_)
+  end
+
+  def collidable?
+    false
   end
 end
