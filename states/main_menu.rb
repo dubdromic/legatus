@@ -7,7 +7,7 @@ class MainMenu < State
   end
 
   def update(input)
-    stop and return InGame.start(screen) if input.space?
+    stop and start_game if input.space?
     self
   end
 
@@ -20,6 +20,10 @@ class MainMenu < State
   private
 
   attr_reader :title_font, :description_font, :background
+
+  def start_game
+    @next = InGame.start(screen)
+  end
 
   def background_song
     "media/intro.wav"
