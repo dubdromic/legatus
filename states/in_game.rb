@@ -24,11 +24,11 @@ class InGame < State
   attr_reader :entity_pool, :background, :last_enemy_time
 
   def end_game
-    @next = MainMenu.start screen
+    @next = GameOver.start screen
   end
 
   def player_killed?
-    false
+    !entity_pool.entities.any? { |e| e.is_a?(Player) }
   end
 
   def add_new_enemy
