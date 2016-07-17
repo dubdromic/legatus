@@ -8,7 +8,7 @@ class MainMenu < State
   end
 
   def update(input)
-    stop and return InGame.new(screen).start if input.space?
+    stop and return InGame.start(screen) if input.space?
     self
   end
 

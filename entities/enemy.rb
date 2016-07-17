@@ -1,7 +1,10 @@
 class Enemy < Entity
   attr_accessor :physics
 
+  TEAM = 0
+
   def initialize(x, y)
+    @team = Enemy::TEAM
     super(x, y, image.width, image.height)
   end
 

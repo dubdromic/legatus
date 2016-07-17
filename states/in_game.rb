@@ -9,18 +9,27 @@ class InGame < State
   def update(input)
     add_new_enemy if spawn_enemy?
     entity_pool.update input
+    end_game if player_killed?
 
     self
   end
 
   def draw
-    background_image.draw_rot(background_image.height/2, background_image.width/2, 0, 90)
+    background_image.draw_rot(background_image.height / 2, background_image.width / 2, 0, 90)
     entity_pool.draw
   end
 
   private
 
   attr_reader :entity_pool, :background, :last_enemy_time
+
+  def end_game
+    @next = MainMenu.start screen
+  end
+
+  def player_killed?
+    false
+  end
 
   def add_new_enemy
     @last_enemy_time = Gosu::milliseconds

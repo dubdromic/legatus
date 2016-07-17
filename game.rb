@@ -5,7 +5,7 @@ class Game
 
   def update(input)
     @input = input
-    @state = state.update(input)
+    @state = state.update(input).next
   end
 
   def draw

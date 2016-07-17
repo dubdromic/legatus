@@ -1,9 +1,10 @@
 class Bullet < Entity
-  def initialize(x, y)
+  def initialize(x, y, team = Player::TEAM)
     @image = BulletGraphics.new.image
     @physics = BulletPhysics.new
     @sound = BulletSound.new.sound
     @sound.play
+    @team = team
     super(x, y, image.width, image.height)
   end
 
@@ -20,6 +21,10 @@ class Bullet < Entity
   end
 
   def before_removal
+  end
+
+  def hit!(other)
+    remove! unless other.friendly?(self)
   end
 
   private

@@ -1,5 +1,12 @@
 class Entity
-  attr_accessor :x, :y, :w, :h, :screen, :pool, :mark_for_removal
+  attr_accessor :x,
+    :y,
+    :w,
+    :h,
+    :screen,
+    :pool,
+    :mark_for_removal,
+    :team
 
   def initialize(x, y, w, h)
     @x = x
@@ -34,6 +41,10 @@ class Entity
 
   def removable?
     mark_for_removal
+  end
+
+  def friendly?(other)
+    team == other.team
   end
 
   def update(_)

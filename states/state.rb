@@ -1,7 +1,14 @@
 class State
+  def self.start(screen)
+    new(screen).start
+  end
+
+  attr_reader :next
+
   def initialize(screen)
     @screen = screen
     @background_song = nil
+    @next = self
   end
 
   def start
@@ -25,6 +32,7 @@ class State
   private
 
   attr_reader :screen
+  attr_writer :next
 
   def play_background_music
     @background_music = background_music.play(1, 1, true)

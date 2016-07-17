@@ -1,6 +1,8 @@
 class Player < Entity
   attr_accessor :physics
 
+  TEAM = 1
+
   def initialize(screen)
     @physics = PlayerPhysics.new
     @image = PlayerGraphics.new.image
@@ -8,6 +10,7 @@ class Player < Entity
     @last_bullet_time = Gosu::milliseconds
     @sound = PlayerSound.new.sound
     @sound.play
+    @team = Player::TEAM
     super(
       screen.half_width - image.width/2,
       screen.h - (image.height + 40),
@@ -23,6 +26,10 @@ class Player < Entity
 
   def draw
     image.draw(x, y, 0)
+  end
+
+  def hit!(other)
+    remove! unless other.friendly?(self)
   end
 
   def fire
