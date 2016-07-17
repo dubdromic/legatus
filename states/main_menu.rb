@@ -12,7 +12,7 @@ class MainMenu < State
   end
 
   def draw
-    background.draw_rot(background.height / 2, background.width / 2, 0, 90)
+    background.draw(0, 0, 0)
     title_font.draw("Legatus", 150, 200, 1)
     description_font.draw('Press Spacebar', 150, 255, 1)
   end
