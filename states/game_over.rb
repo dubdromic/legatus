@@ -11,7 +11,7 @@ class GameOver < State
   end
 
   def draw
-    background.draw_rot(background.height / 2, background.width / 2, 0, 90)
+    background.draw(0, 0, 0)
     title_font.draw("Game Over!", 150, 200, 1)
     description_font.draw('You suck.', 150, 255, 1)
   end
