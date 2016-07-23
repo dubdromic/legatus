@@ -21,6 +21,11 @@ class State
     self
   end
 
+  def pause
+    stop_background_music
+    self
+  end
+
   def update(input)
     fail NotImplementedError
   end
@@ -35,7 +40,7 @@ class State
   attr_writer :next
 
   def play_background_music
-    @background_music = background_music.play(1, 1, true)
+    background_music.play true
   end
 
   def stop_background_music
@@ -43,7 +48,7 @@ class State
   end
 
   def background_music
-    @background_music ||= background_song ? Gosu::Sample.new(background_song) : NullSample.new
+    @background_music ||= background_song ? Gosu::Song.new(background_song) : NullSample.new
   end
 
   class NullSample

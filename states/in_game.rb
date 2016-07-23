@@ -7,6 +7,7 @@ class InGame < State
   end
 
   def update(input)
+    stop and return Pause.new(self, screen) if input.p?
     background.update
     add_new_enemy if spawn_enemy?
     entity_pool.update input

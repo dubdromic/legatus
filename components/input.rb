@@ -34,6 +34,10 @@ class Input
     pushed? klass::KbEscape
   end
 
+  def p?
+    pushed? klass::KbP
+  end
+
   private
 
   attr_reader :klass

@@ -12,6 +12,14 @@ class Window  < Gosu::Window
   WIDTH = 480
   HEIGHT = 640
 
+  def self.half_width
+    WIDTH / 2
+  end
+
+  def self.half_height
+    HEIGHT / 2
+  end
+
   def initialize
     super(WIDTH, HEIGHT)
     self.caption = 'Legatus'
